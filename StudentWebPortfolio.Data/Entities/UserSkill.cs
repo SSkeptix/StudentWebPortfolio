@@ -15,9 +15,11 @@ namespace StudentWebPortfolio.Data.Entities
         // Foreign keys.
         public long UserId { get; set; }
         public long SkillId { get; set; }
+        public long? ValidatedByUserId { get; set; }
 
         // Navigation Properties.
         public virtual User User { get; set; }
         public virtual Skill Skill { get; set; }
+        public virtual User ValidatedByUser { get; set; }
     }
 }

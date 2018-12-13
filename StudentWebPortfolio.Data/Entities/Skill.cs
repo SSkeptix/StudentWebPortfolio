@@ -18,5 +18,6 @@ namespace StudentWebPortfolio.Data.Entities
 
         // Navigation Properties.
         public virtual User ValidatedByUser { get; set; }
+        public virtual ICollection<UserSkill> UserSkills { get; set; }
     }
 }
