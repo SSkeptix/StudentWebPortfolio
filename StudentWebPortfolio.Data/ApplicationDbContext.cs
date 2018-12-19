@@ -7,7 +7,7 @@ using System.Text;
 
 namespace StudentWebPortfolio.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User, UserRole, long>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

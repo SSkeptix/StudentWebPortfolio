@@ -5,12 +5,14 @@ VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Data", "StudentWebPortfolio.Data\StudentWebPortfolio.Data.csproj", "{CE51255E-0024-4F99-B104-6228E69634BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWebPortfolio.Common", "StudentWebPortfolio.Common\StudentWebPortfolio.Common.csproj", "{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Common", "StudentWebPortfolio.Common\StudentWebPortfolio.Common.csproj", "{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D153841C-0B2D-4AE8-A978-196671A31D5C}"
 	ProjectSection(SolutionItems) = preProject
 		secretsettings.json = secretsettings.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWebPortfolio.Business", "StudentWebPortfolio.Business\StudentWebPortfolio.Business.csproj", "{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
