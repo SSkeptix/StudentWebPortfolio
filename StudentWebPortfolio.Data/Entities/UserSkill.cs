@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StudentWebPortfolio.Data.Entities
 {
-    public class UserSkill
+    public class UserSkill : IUpdatableEntity
     {
         // Key.
         public long UserSkillId { get; set; }

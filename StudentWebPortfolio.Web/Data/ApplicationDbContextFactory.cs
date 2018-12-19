@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using StudentWebPortfolio.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace StudentWebPortfolio.Data
+namespace StudentWebPortfolio.Web.Data
 {
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {

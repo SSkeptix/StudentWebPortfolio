@@ -3,12 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using StudentWebPortfolio.Data.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace StudentWebPortfolio.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<User, UserRole, long>
+    public class ApplicationDbContext : IdentityDbContext<User, Role, long>
     {
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<UserSkill> UserSkills { get; set; }
+        public DbSet<Portfolio> Portfolios { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -16,12 +23,29 @@ namespace StudentWebPortfolio.Data
             ChangeTracker.LazyLoadingEnabled = false;
         }
 
-        public DbSet<Skill> Skills { get; set; }
-        public DbSet<UserSkill> UserSkills { get; set; }
-        public DbSet<Portfolio> Portfolios { get; set; }
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            OnBeforeSaving();
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            OnBeforeSaving();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        private void OnBeforeSaving()
+        {
+            var dateTime = DateTime.UtcNow;
+
+            foreach (var entry in ChangeTracker.Entries<IUpdatableEntity>()
+                    .Where(_ => _.State == EntityState.Added || _.State == EntityState.Modified))
+                entry.Entity.UpdatedOnUtc = dateTime;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {        
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>(entity =>
@@ -40,6 +64,7 @@ namespace StudentWebPortfolio.Data
 
             modelBuilder.Entity<Skill>(entity =>
             {
+                entity.ToTable("Skills", "dbo");
                 entity.HasKey(_ => _.SkillId);
 
                 entity.Property(_ => _.UpdatedOnUtc).HasColumnType("datetime");
@@ -54,6 +79,7 @@ namespace StudentWebPortfolio.Data
 
             modelBuilder.Entity<UserSkill>(entity =>
             {
+                entity.ToTable("UserSkills", "dbo");
                 entity.HasKey(_ => _.UserSkillId);
 
                 entity.Property(_ => _.UpdatedOnUtc).HasColumnType("datetime");
@@ -84,6 +110,7 @@ namespace StudentWebPortfolio.Data
 
             modelBuilder.Entity<Portfolio>(entity =>
             {
+                entity.ToTable("Portfolios", "dbo");
                 entity.HasKey(_ => _.UserId);
 
                 entity.Property(_ => _.GitHubUrl).HasMaxLength(64);

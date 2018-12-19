@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		secretsettings.json = secretsettings.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWebPortfolio.Business", "StudentWebPortfolio.Business\StudentWebPortfolio.Business.csproj", "{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Business", "StudentWebPortfolio.Business\StudentWebPortfolio.Business.csproj", "{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWebPortfolio.Web", "StudentWebPortfolio.Web\StudentWebPortfolio.Web.csproj", "{95B2FA8E-A6B9-400D-8659-429754ED1522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
