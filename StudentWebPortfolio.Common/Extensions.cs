@@ -22,9 +22,6 @@ namespace StudentWebPortfolio.Common
         public static IEnumerable<TDestination> MapTo<TDestination>(this IEnumerable<object> source) 
             where TDestination : class, new()
             => source.Select(_ => _.MapTo<TDestination>());
-
-        public static IQueryable<TDestination> MapOrSelect<TDestination, TSourse>(this IQueryable<TSourse> query, Expression<Func<TSourse, TDestination>> select = null)
-            => select != null ? query.Select(select) : query.ProjectTo<TDestination>();
     }
 
     public static class CommonExtenstions

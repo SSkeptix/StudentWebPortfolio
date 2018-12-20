@@ -13,12 +13,6 @@ namespace StudentWebPortfolio.Business
     {
         public static void Initialize(IMapperConfigurationExpression cfg)
         {
-            // Register domain entities to ifself, need to avoid bug with project to itself.
-            AppDomain.CurrentDomain.GetAssemblies()
-                .First(_ => _.FullName.Contains("StudentWebPortfolio.Data"))
-                .GetTypes()
-                .Where(_ => _.Namespace == "StudentWebPortfolio.Data.Entities" && !_.IsInterface)
-                .ForEach(_ => cfg.CreateMap(_, _));
         }
     }
 }
