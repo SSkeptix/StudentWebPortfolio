@@ -5,6 +5,7 @@ using StudentWebPortfolio.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace StudentWebPortfolio.Web.Managers
@@ -33,5 +34,7 @@ namespace StudentWebPortfolio.Web.Managers
 
             return result;
         }
+
+        public new long GetUserId(ClaimsPrincipal principal) => long.Parse(base.GetUserId(principal));
     }
 }

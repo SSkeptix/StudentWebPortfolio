@@ -10,8 +10,4 @@
     <ProjectReference Include="..\StudentWebPortfolio.Data\StudentWebPortfolio.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
-
 </Project>

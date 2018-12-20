@@ -21,6 +21,7 @@ namespace StudentWebPortfolio.Data
         {
             ChangeTracker.AutoDetectChangesEnabled = false;
             ChangeTracker.LazyLoadingEnabled = false;
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

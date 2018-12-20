@@ -17,6 +17,7 @@ using StudentWebPortfolio.Data.Entities;
 using AutoMapper;
 using StudentWebPortfolio.Business.Queries;
 using StudentWebPortfolio.Web.Managers;
+using StudentWebPortfolio.Business.Commands;
 
 namespace StudentWebPortfolio.Web
 {
@@ -49,13 +50,13 @@ namespace StudentWebPortfolio.Web
                 .AddDefaultTokenProviders();
 
             services.AddScoped<UserManager>();
-            services.AddScoped<UserManager<User>>(_ => _.GetRequiredService<UserManager>());
             services.AddScoped<RoleManager>();
-            services.AddScoped<RoleManager<Role>>(_ => _.GetRequiredService<RoleManager>());
             services.AddScoped<SignInManager>();
-            services.AddScoped<SignInManager<User>>(_ => _.GetRequiredService<SignInManager>());
 
             services.AddScoped<IUserQueries, UserQueries>();
+            services.AddScoped<IPortfolioQueries, PortfolioQueries>();
+
+            services.AddScoped<IPortfolioCommands, PortfolioCommands>();
                        
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -89,6 +90,9 @@ namespace StudentWebPortfolio.Web
             Mapper.Initialize(cfg =>
             {
                 Business.AutoMapperConfig.Initialize(cfg);
+
+                cfg.CreateMap<Areas.Identity.Pages.Account.Manage.PortfolioModel.InputModel, Portfolio>(MemberList.None);
+                cfg.CreateMap<Portfolio, Areas.Identity.Pages.Account.Manage.PortfolioModel.InputModel>(MemberList.None);
             });
         }
     }

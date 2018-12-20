@@ -1,0 +1,69 @@
+﻿@using StudentWebPortfolio.Web.Helpers
+@using StudentWebPortfolio.Common
+@model MessageBox
+
+@{
+    Layout = null;
+}
+
+<div id="MessageBox" class="alert @(Model != null ? ("alert-" + Model.MessageType.GetStringValue()) : "display-none" )">
+    <strong><span class="MessageType">@Model?.MessageType.ToString()</span>!</strong>
+    <span class="MessageText">@Model?.Text</span>
+    <script>
+        @if (Model?.IsAutoHide ?? false)
+        {
+            <text>
+                document.addEventListener('DOMContentLoaded', function () {
+                    MessageBox.autoHide(5000);
+                });
+            </text>
+        }
+
+        var MessageBox = {
+            show: function (data) {
+                var messageType = null;
+                var messageAlertClass = null;
+
+                @foreach (var messageType in Enum.GetValues(typeof(MessageType)).Cast<MessageType>())
+                {
+                    <text>
+                if (data.messageType == @((int)messageType) || data.messageType == '@messageType.ToString()') {
+                        messageType = '@messageType.ToString()';
+                        messageAlertClass = '@messageType.GetStringValue()';
+                    }
+                    </text>
+                }
+
+                $('#MessageBox').removeClass();
+                $('#MessageBox').addClass('alert').addClass('alert-' + messageAlertClass);
+                $('#MessageBox').find('.MessageType').text(messageType);
+                $('#MessageBox').find('.MessageText').text(data.text);
+
+                $('#MessageBox').fadeIn();
+            },
+            temporarilyShow: function (data, time, fadeTime) {
+                if (!time)
+                    time = 3000;
+                if (!fadeTime)
+                    fadeTime = 3000;
+
+                this.show(data);
+                this.autoHide(time, fadeTime);
+            },
+            hide: function (fadeTime) {
+                if (!fadeTime)
+                    fadeTime = 3000;
+                $('#MessageBox').fadeOut(fadeTime);
+            },
+            autoHide: function (time, fadeTime) {
+                if (!time)
+                    time = 3000;
+                if (!fadeTime)
+                    fadeTime = 3000;
+                setTimeout(function () { MessageBox.hide(fadeTime) }, time);
+            }
+        }
+    </script>
+</div>
+
+

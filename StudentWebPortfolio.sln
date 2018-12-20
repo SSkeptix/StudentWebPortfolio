@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Common"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Business", "StudentWebPortfolio.Business\StudentWebPortfolio.Business.csproj", "{A6C5397C-DEA5-45B5-B969-F9F6B6BF3A89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWebPortfolio.Web", "StudentWebPortfolio.Web\StudentWebPortfolio.Web.csproj", "{1CC1621B-CDC3-4611-867E-28518A5458BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Web", "StudentWebPortfolio.Web\StudentWebPortfolio.Web.csproj", "{1CC1621B-CDC3-4611-867E-28518A5458BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2B5014F6-DF70-4C74-BB09-FF1784355FDF}"
 	ProjectSection(SolutionItems) = preProject
