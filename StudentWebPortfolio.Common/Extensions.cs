@@ -26,4 +26,13 @@ namespace StudentWebPortfolio.Common
         public static IQueryable<TDestination> MapOrSelect<TDestination, TSourse>(this IQueryable<TSourse> query, Expression<Func<TSourse, TDestination>> select = null)
             => select != null ? query.Select(select) : query.ProjectTo<TDestination>();
     }
+
+    public static class CommonExtenstions
+    {
+        public static void ForEach<T>(this IEnumerable<T> elements, Action<T> action)
+        {
+            foreach (var element in elements)
+                action(element);
+        }
+    }
 }
