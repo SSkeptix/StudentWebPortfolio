@@ -2,6 +2,7 @@
 using StudentWebPortfolio.Common;
 using StudentWebPortfolio.Data;
 using StudentWebPortfolio.Data.Entities;
+using StudentWebPortfolio.Web.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace StudentWebPortfolio.Web.Data
     {
         private const string ADMIN_PASSWORD = "qweertyg17Z++";
 
-        public static void Initialize(ApplicationDbContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
+        public static void Initialize(ApplicationDbContext context, UserManager userManager, RoleManager roleManager)
         {
             if (context.Users.Any())
                 return; // DB has been seeded.

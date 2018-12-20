@@ -1,20 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Data", "StudentWebPortfolio.Data\StudentWebPortfolio.Data.csproj", "{CE51255E-0024-4F99-B104-6228E69634BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Data", "StudentWebPortfolio.Data\StudentWebPortfolio.Data.csproj", "{FF98AEE8-AAC1-4ACC-8EA6-DDDC83906BEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Common", "StudentWebPortfolio.Common\StudentWebPortfolio.Common.csproj", "{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Common", "StudentWebPortfolio.Common\StudentWebPortfolio.Common.csproj", "{79F59242-54A3-4660-8668-2E40D6253981}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D153841C-0B2D-4AE8-A978-196671A31D5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Business", "StudentWebPortfolio.Business\StudentWebPortfolio.Business.csproj", "{A6C5397C-DEA5-45B5-B969-F9F6B6BF3A89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWebPortfolio.Web", "StudentWebPortfolio.Web\StudentWebPortfolio.Web.csproj", "{1CC1621B-CDC3-4611-867E-28518A5458BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2B5014F6-DF70-4C74-BB09-FF1784355FDF}"
 	ProjectSection(SolutionItems) = preProject
 		secretsettings.json = secretsettings.json
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWebPortfolio.Business", "StudentWebPortfolio.Business\StudentWebPortfolio.Business.csproj", "{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentWebPortfolio.Web", "StudentWebPortfolio.Web\StudentWebPortfolio.Web.csproj", "{95B2FA8E-A6B9-400D-8659-429754ED1522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,27 +22,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CE51255E-0024-4F99-B104-6228E69634BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE51255E-0024-4F99-B104-6228E69634BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE51255E-0024-4F99-B104-6228E69634BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE51255E-0024-4F99-B104-6228E69634BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D836D26-C7B3-4676-A59A-F54BFB4E0F74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95729D14-09B6-4EA9-BC2B-F2C7E79E58B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95B2FA8E-A6B9-400D-8659-429754ED1522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF98AEE8-AAC1-4ACC-8EA6-DDDC83906BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF98AEE8-AAC1-4ACC-8EA6-DDDC83906BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF98AEE8-AAC1-4ACC-8EA6-DDDC83906BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF98AEE8-AAC1-4ACC-8EA6-DDDC83906BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F59242-54A3-4660-8668-2E40D6253981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F59242-54A3-4660-8668-2E40D6253981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F59242-54A3-4660-8668-2E40D6253981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F59242-54A3-4660-8668-2E40D6253981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C5397C-DEA5-45B5-B969-F9F6B6BF3A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C5397C-DEA5-45B5-B969-F9F6B6BF3A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C5397C-DEA5-45B5-B969-F9F6B6BF3A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C5397C-DEA5-45B5-B969-F9F6B6BF3A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC1621B-CDC3-4611-867E-28518A5458BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC1621B-CDC3-4611-867E-28518A5458BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC1621B-CDC3-4611-867E-28518A5458BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC1621B-CDC3-4611-867E-28518A5458BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {67E2C8DB-CF3E-4718-B429-99FBDDB2A59B}
+		SolutionGuid = {572F6EF5-7D69-43B5-BE6C-01CFA0EEDB9D}
 	EndGlobalSection
 EndGlobal

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StudentWebPortfolio.Data;
-using StudentWebPortfolio.Data.Entities;
+using StudentWebPortfolio.Web.Core;
 using StudentWebPortfolio.Web.Data;
 
 namespace StudentWebPortfolio.Web
@@ -28,8 +28,8 @@ namespace StudentWebPortfolio.Web
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
-                    var userManager = services.GetRequiredService<UserManager<User>>();
-                    var roleManager = services.GetRequiredService<RoleManager<Role>>();
+                    var userManager = services.GetRequiredService<UserManager>();
+                    var roleManager = services.GetRequiredService<RoleManager>();
                     ApplicationDbInitializer.Initialize(context, userManager, roleManager);
                 }
                 catch (Exception ex)
@@ -42,7 +42,7 @@ namespace StudentWebPortfolio.Web
             host.Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) 
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
             => WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {

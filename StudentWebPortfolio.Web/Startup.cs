@@ -15,19 +15,21 @@ using Microsoft.Extensions.DependencyInjection;
 using StudentWebPortfolio.Data;
 using StudentWebPortfolio.Data.Entities;
 using AutoMapper;
+using StudentWebPortfolio.Web.Core;
+using StudentWebPortfolio.Business.Queries;
 
 namespace StudentWebPortfolio.Web
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
             InitializeAutoMapper();
         }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -46,6 +48,15 @@ namespace StudentWebPortfolio.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<UserManager>();
+            services.AddScoped<UserManager<User>>(_ => _.GetRequiredService<UserManager>());
+            services.AddScoped<RoleManager>();
+            services.AddScoped<RoleManager<Role>>(_ => _.GetRequiredService<RoleManager>());
+            services.AddScoped<SignInManager>();
+            services.AddScoped<SignInManager<User>>(_ => _.GetRequiredService<SignInManager>());
+
+            services.AddScoped<IUserQueries, UserQueries>();
+                       
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
