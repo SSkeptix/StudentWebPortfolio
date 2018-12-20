@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StudentWebPortfolio.Web.Core
+namespace StudentWebPortfolio.Web.Managers
 {
     public class RoleManager : RoleManager<Role>
     {

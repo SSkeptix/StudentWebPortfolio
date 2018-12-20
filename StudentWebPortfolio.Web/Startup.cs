@@ -15,8 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using StudentWebPortfolio.Data;
 using StudentWebPortfolio.Data.Entities;
 using AutoMapper;
-using StudentWebPortfolio.Web.Core;
 using StudentWebPortfolio.Business.Queries;
+using StudentWebPortfolio.Web.Managers;
 
 namespace StudentWebPortfolio.Web
 {

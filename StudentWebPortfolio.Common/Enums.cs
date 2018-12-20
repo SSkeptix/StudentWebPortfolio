@@ -12,7 +12,7 @@ namespace StudentWebPortfolio.Common
         public const string Employer = "Employer";
         public const string Student = "Student";
 
-        public static readonly string[] UserRoles = { Teacher, Employer, Student };
+        public static readonly string[] UserRoles = { Student, Teacher, Employer };
         public static readonly string[] AllRoles = { Admin, Teacher, Employer, Student };
     }
 

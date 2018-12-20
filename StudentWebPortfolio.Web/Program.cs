@@ -10,8 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using StudentWebPortfolio.Data;
-using StudentWebPortfolio.Web.Core;
 using StudentWebPortfolio.Web.Data;
+using StudentWebPortfolio.Web.Managers;
 
 namespace StudentWebPortfolio.Web
 {

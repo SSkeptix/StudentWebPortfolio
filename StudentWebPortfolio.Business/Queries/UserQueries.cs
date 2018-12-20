@@ -24,6 +24,7 @@ namespace StudentWebPortfolio.Business.Queries
         public Task<T> ByIdAsync<T>(long userId, Expression<Func<User, T>> selector = null)
             => _context.Users.Where(_ => _.Id == userId).MapOrSelect(selector).FirstOrDefaultAsync();
 
-
+        public Task<T> ByEmailAsync<T>(string email, Expression<Func<User, T>> selector = null)
+            => _context.Users.Where(_ => _.NormalizedEmail == email.ToUpperInvariant()).MapOrSelect(selector).FirstOrDefaultAsync();
     }
 }

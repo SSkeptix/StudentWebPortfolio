@@ -2,7 +2,7 @@
 using StudentWebPortfolio.Common;
 using StudentWebPortfolio.Data;
 using StudentWebPortfolio.Data.Entities;
-using StudentWebPortfolio.Web.Core;
+using StudentWebPortfolio.Web.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StudentWebPortfolio.Web.Core
+namespace StudentWebPortfolio.Web.Managers
 {
     public class UserManager : UserManager<User>
     {
@@ -24,5 +24,14 @@ namespace StudentWebPortfolio.Web.Core
             )           
             : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         { }
+
+        public async Task<IdentityResult> CreateAsync(User user, string password, string role)
+        {
+            var result = await CreateAsync(user, password);
+            if (result.Succeeded)
+                result = await AddToRoleAsync(user, role);
+
+            return result;
+        }
     }
 }

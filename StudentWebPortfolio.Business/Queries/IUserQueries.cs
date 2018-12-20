@@ -10,5 +10,6 @@ namespace StudentWebPortfolio.Business.Queries
     public interface IUserQueries
     {
         Task<T> ByIdAsync<T>(long userId, Expression<Func<User, T>> selector = null);
+        Task<T> ByEmailAsync<T>(string email, Expression<Func<User, T>> selector = null);
     }
 }
