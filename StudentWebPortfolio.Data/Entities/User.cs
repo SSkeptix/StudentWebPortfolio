@@ -17,10 +17,10 @@ namespace StudentWebPortfolio.Data.Entities
 
         // Navigation Properties.
         public virtual User ValidatedByUser { get; set; }
+        public virtual Portfolio Portfolio { get; set; }
         public virtual ICollection<User> ValidatedUsers { get; set; }
         public virtual ICollection<Skill> ValidatedSkills { get; set; }
         public virtual ICollection<UserSkill> UserSkills { get; set; }
         public virtual ICollection<UserSkill> ValidatedUserSkills { get; set; }
-        public virtual ICollection<Portfolio> Portfolios { get; set; }
     }
 }

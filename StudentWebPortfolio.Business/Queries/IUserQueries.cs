@@ -10,7 +10,8 @@ namespace StudentWebPortfolio.Business.Queries
 {
     public interface IUserQueries
     {
-        IQueryable<User> ByIdAsync(long userId);
-        IQueryable<User> ByEmailAsync(string email);
+        IQueryable<User> ById(long userId);
+        IQueryable<User> ByEmail(string email);
+        IQueryable<User> ByUsername(string username);
     }
 }

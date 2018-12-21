@@ -1,0 +1,71 @@
+﻿@page "{username?}"
+@model StudentWebPortfolio.Web.Pages.ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-2">
+        <label asp-for="UserModel.UserName"></label>
+    </div>
+    <div class="col-4">
+        @Model.UserModel.UserName
+    </div>
+
+    <div class="col-2">
+        <label asp-for="UserModel.Email"></label>
+    </div>
+    <div class="col-4">
+        @Model.UserModel.Email
+    </div>
+
+    <div class="col-2">
+        <label asp-for="UserModel.FirstName"></label>
+    </div>
+    <div class="col-4">
+        @Model.UserModel.FirstName
+    </div>
+
+    <div class="col-2">
+        <label asp-for="UserModel.LastName"></label>
+    </div>
+    <div class="col-4">
+        @Model.UserModel.LastName
+    </div>
+
+    @if (Model.UserModel.Portfolio != null)
+    {
+        <div class="col-2">
+            <label asp-for="UserModel.Portfolio.Group"></label>
+        </div>
+        <div class="col-4">
+            @Model.UserModel.Portfolio.Group
+        </div>
+
+        <div class="col-2">
+            <label asp-for="UserModel.Portfolio.English"></label>
+        </div>
+        <div class="col-4">
+            @Model.UserModel.Portfolio.English
+        </div>
+
+        <div class="col-2">
+            <label asp-for="UserModel.Portfolio.GitHubUrl"></label>
+        </div>
+        <div class="col-4">
+            @Model.UserModel.Portfolio.GitHubUrl
+        </div>
+
+        <div class="col-2">
+            <label asp-for="UserModel.Portfolio.Description"></label>
+        </div>
+        <div class="col-4">
+            @Model.UserModel.Portfolio.Description
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -96,7 +96,7 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account
                 return Page();
             }
 
-            if ((await _userQueries.ByEmailAsync(Input.Email).AnyAsync()))
+            if ((await _userQueries.ByEmail(Input.Email).AnyAsync()))
             {
                 ModelState.AddModelError("Input.Email", "This email is already in use by another user.");
                 return Page();

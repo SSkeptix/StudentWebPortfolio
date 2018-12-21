@@ -123,8 +123,8 @@ namespace StudentWebPortfolio.Data
                     .HasName("IX_English");
 
                 entity.HasOne(_ => _.User)
-                    .WithMany(_ => _.Portfolios)
-                    .HasForeignKey(_ => _.UserId)
+                    .WithOne(_ => _.Portfolio)
+                    .HasForeignKey<Portfolio>(_ => _.UserId)
                     .HasConstraintName("FK_dbo.Portfolios_UserId__dbo.AspNetUsers_Id")
                     .OnDelete(DeleteBehavior.Restrict);
             });

@@ -21,10 +21,13 @@ namespace StudentWebPortfolio.Business.Queries
             _context = context;
         }
 
-        public IQueryable<User> ByIdAsync(long userId)
+        public IQueryable<User> ById(long userId)
             => _context.Users.Where(_ => _.Id == userId);
 
-        public IQueryable<User> ByEmailAsync(string email)
+        public IQueryable<User> ByEmail(string email)
             => _context.Users.Where(_ => _.NormalizedEmail == email.ToUpperInvariant());
+
+        public IQueryable<User> ByUsername(string username)
+            => _context.Users.Where(_ => _.NormalizedUserName == username.ToUpperInvariant());
     }
 }
