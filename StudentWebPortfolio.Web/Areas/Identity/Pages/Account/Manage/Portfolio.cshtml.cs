@@ -6,6 +6,7 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using StudentWebPortfolio.Business;
 using StudentWebPortfolio.Business.Commands;
 using StudentWebPortfolio.Business.Queries;
 using StudentWebPortfolio.Common;
@@ -18,16 +19,16 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account.Manage
     public class PortfolioModel : PageModel
     {
         #region Ctor
-        private readonly IPortfolioQueries _portfolioQueries;
-        private readonly IPortfolioCommands _portfolioCommands;
+        private readonly IQueryContainer _queries;
+        private readonly ICommandContainer _commands;
         private readonly UserManager _userManager;
 
-        public PortfolioModel(IPortfolioQueries portfolioQueries,
-            IPortfolioCommands portfolioCommands,
+        public PortfolioModel(IQueryContainer queries,
+            ICommandContainer commands,
             UserManager userManager)
         {
-            _portfolioQueries = portfolioQueries;
-            _portfolioCommands = portfolioCommands;
+            _queries = queries;
+            _commands = commands;
             _userManager = userManager;
         }
         #endregion
@@ -35,6 +36,8 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account.Manage
         #region Model
         [BindProperty]
         public InputModel Input { get; set; }
+        [BindProperty]
+        public SkillModel[] Skills { get; set; }
         public MessageBox MessageBox { get; set; }
 
         public class InputModel
@@ -45,13 +48,20 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account.Manage
             public string Description { get; set; }
         }
 
+        public class SkillModel
+        {
+            public long SkillId { get; set; }
+            public string Name { get; set; }
+            public bool IsChecked { get; set; }
+        }
         #endregion
 
         public async Task OnGetAsync()
         {
             var userId = _userManager.GetUserId(User);
 
-            Input = await _portfolioQueries.ByUserId(userId).ProjectTo<InputModel>().FirstOrDefaultAsync();           
+            Input = await _queries.Portfolios.ByUserId(userId).ProjectTo<InputModel>().FirstOrDefaultAsync();
+            await Initialize();
         }
 
         public async Task OnPostAsync()
@@ -61,12 +71,29 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account.Manage
             var portfolio = Input.MapTo<Portfolio>();
             portfolio.UserId = userId;
 
-            if (await _portfolioQueries.ByUserId(userId).AnyAsync())
-                await _portfolioCommands.Update(portfolio);
+            if (await _queries.Portfolios.ByUserId(userId).AnyAsync())
+                await _commands.Portfolios.Update(portfolio,
+                    Skills.Where(_ => _.IsChecked).Select(_ => _.SkillId));
             else
-                await _portfolioCommands.Add(portfolio);
+                await _commands.Portfolios.Add(portfolio);
 
             MessageBox = MessageBox.Success("Portfolio successfully updated.");
+            await Initialize();
+        }
+
+        private async Task Initialize()
+        {
+            var userId = _userManager.GetUserId(User);
+
+            Skills = await _queries.Skills.All()
+                .Include(_ => _.UserSkills)
+                .Select(_ => new SkillModel
+                {
+                    SkillId = _.SkillId,
+                    Name = _.Name,
+                    IsChecked = _.UserSkills.Any(s => s.UserId == userId)
+                })
+                .ToArrayAsync();
         }
     }
 }

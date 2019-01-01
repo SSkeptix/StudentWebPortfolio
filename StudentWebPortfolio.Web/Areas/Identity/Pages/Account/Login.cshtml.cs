@@ -14,6 +14,7 @@ using StudentWebPortfolio.Web.Managers;
 using StudentWebPortfolio.Business.Queries;
 using StudentWebPortfolio.Common;
 using Microsoft.EntityFrameworkCore;
+using StudentWebPortfolio.Business;
 
 namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account
 {
@@ -23,16 +24,16 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account
         private readonly SignInManager _signInManager;
         private readonly UserManager _userManager;
         private readonly ILogger<LoginModel> _logger;
-        private readonly IPortfolioQueries _portfolioQueries;
+        private readonly IQueryContainer _queries;
 
         public LoginModel(SignInManager signInManager, 
             UserManager userManager,
             ILogger<LoginModel> logger,
-            IPortfolioQueries portfolioQueries)
+            IQueryContainer queries)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _portfolioQueries = portfolioQueries;
+            _queries = queries;
             _logger = logger;
         }
 
@@ -92,7 +93,7 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account
                     _logger.LogInformation("User logged in.");
 
                     if (await _userManager.IsInRoleAsync(user, UserRole.Student)
-                        && !await _portfolioQueries.ByUserId(user.Id).AnyAsync())
+                        && !await _queries.Portfolios.ByUserId(user.Id).AnyAsync())
                         returnUrl = "/Identity/Account/Manage/Portfolio";
 
                     return LocalRedirect(returnUrl);

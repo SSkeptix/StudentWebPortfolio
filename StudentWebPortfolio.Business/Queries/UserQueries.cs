@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace StudentWebPortfolio.Business.Queries
 {
-    public class UserQueries : IUserQueries
+    internal class UserQueries : IUserQueries
     {
         private readonly ApplicationDbContext _context;
 

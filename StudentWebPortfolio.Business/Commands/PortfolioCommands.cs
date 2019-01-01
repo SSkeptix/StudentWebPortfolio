@@ -1,4 +1,5 @@
-﻿using StudentWebPortfolio.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using StudentWebPortfolio.Data;
 using StudentWebPortfolio.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StudentWebPortfolio.Business.Commands
 {
-    public class PortfolioCommands : IPortfolioCommands
+    internal class PortfolioCommands : IPortfolioCommands
     {
         private readonly ApplicationDbContext _context;
 
@@ -23,10 +24,27 @@ namespace StudentWebPortfolio.Business.Commands
             return _context.SaveChangesAsync();
         }
 
-        public Task Update(Portfolio portfolio)
+        public async Task Update(Portfolio portfolio, IEnumerable<long> skillsIds)
         {
             _context.Update(portfolio);
-            return _context.SaveChangesAsync();
+
+            var userSkills = await _context.UserSkills
+                .Where(_ => _.UserId == portfolio.UserId)
+                .ToArrayAsync();
+
+            var skillsToRemove = userSkills.Where(_ => !skillsIds.Contains(_.SkillId));
+            _context.RemoveRange(skillsToRemove);
+
+            var skillsToAdd = skillsIds
+                .Where(_ => !userSkills.Any(u => u.SkillId == _))
+                .Select(_ => new UserSkill
+                {
+                    UserId = portfolio.UserId,
+                    SkillId = _,
+                });
+            _context.AddRange(skillsToAdd);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

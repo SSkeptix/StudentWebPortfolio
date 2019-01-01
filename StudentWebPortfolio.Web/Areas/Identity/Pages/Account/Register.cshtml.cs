@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using StudentWebPortfolio.Business;
 using StudentWebPortfolio.Business.Queries;
 using StudentWebPortfolio.Common;
 using StudentWebPortfolio.Data.Entities;
@@ -28,7 +29,7 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account
         private readonly RoleManager _roleManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly IUserQueries _userQueries;
+        private readonly IQueryContainer _queries;
 
         public RegisterModel(
             UserManager userManager,
@@ -36,14 +37,14 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account
             RoleManager roleManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IUserQueries userQueries)
+            IQueryContainer queries)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _logger = logger;
             _emailSender = emailSender;
-            _userQueries = userQueries;
+            _queries = queries;
         }
         #endregion
 
@@ -96,7 +97,7 @@ namespace StudentWebPortfolio.Web.Areas.Identity.Pages.Account
                 return Page();
             }
 
-            if ((await _userQueries.ByEmail(Input.Email).AnyAsync()))
+            if ((await _queries.Users.ByEmail(Input.Email).AnyAsync()))
             {
                 ModelState.AddModelError("Input.Email", "This email is already in use by another user.");
                 return Page();

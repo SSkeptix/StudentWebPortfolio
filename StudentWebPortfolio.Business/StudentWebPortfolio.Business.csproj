@@ -10,4 +10,8 @@
     <ProjectReference Include="..\StudentWebPortfolio.Data\StudentWebPortfolio.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

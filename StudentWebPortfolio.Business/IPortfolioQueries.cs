@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace StudentWebPortfolio.Business.Queries
+namespace StudentWebPortfolio.Business
 {
     public interface IPortfolioQueries
     {

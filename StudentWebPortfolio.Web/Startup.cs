@@ -18,6 +18,7 @@ using AutoMapper;
 using StudentWebPortfolio.Business.Queries;
 using StudentWebPortfolio.Web.Managers;
 using StudentWebPortfolio.Business.Commands;
+using StudentWebPortfolio.Business;
 
 namespace StudentWebPortfolio.Web
 {
@@ -53,10 +54,8 @@ namespace StudentWebPortfolio.Web
             services.AddScoped<RoleManager>();
             services.AddScoped<SignInManager>();
 
-            services.AddScoped<IUserQueries, UserQueries>();
-            services.AddScoped<IPortfolioQueries, PortfolioQueries>();
-
-            services.AddScoped<IPortfolioCommands, PortfolioCommands>();
+            services.AddScoped<IQueryContainer, QueryContainer>();
+            services.AddScoped<ICommandContainer, CommandContainer>();
                        
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

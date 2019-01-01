@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentWebPortfolio.Business.Queries
+namespace StudentWebPortfolio.Business
 {
     public interface IUserQueries
     {

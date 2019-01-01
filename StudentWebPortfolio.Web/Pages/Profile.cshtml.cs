@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using StudentWebPortfolio.Business;
 using StudentWebPortfolio.Business.Queries;
 using StudentWebPortfolio.Common;
 using StudentWebPortfolio.Data.Entities;
@@ -17,15 +18,15 @@ namespace StudentWebPortfolio.Web.Pages
         #region Ctor
         private readonly SignInManager _signInManager;
         private readonly UserManager _userManager;
-        private readonly IUserQueries _userQueries;
+        private readonly IQueryContainer _queries;
 
         public ProfileModel(SignInManager signInManager,
             UserManager userManager,
-            IUserQueries userQueries)
+            IQueryContainer queries)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _userQueries = userQueries;
+            _queries = queries;
         }
         #endregion
 
@@ -40,12 +41,12 @@ namespace StudentWebPortfolio.Web.Pages
             if (username == null)
             {
                 if (_signInManager.IsSignedIn(User))
-                    userQuery = _userQueries.ById(_userManager.GetUserId(User));
+                    userQuery = _queries.Users.ById(_userManager.GetUserId(User));
                 else
                     return LocalRedirect("/");
             }
             else
-                userQuery = _userQueries.ByUsername(username);
+                userQuery = _queries.Users.ByUsername(username);
 
             UserModel = await userQuery
                 .Include(_ => _.Portfolio)

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace StudentWebPortfolio.Business.Queries
 {
-    public class PortfolioQueries : IPortfolioQueries
+    internal class PortfolioQueries : IPortfolioQueries
     {
         private readonly ApplicationDbContext _context;
 
